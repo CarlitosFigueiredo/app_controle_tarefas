@@ -27,7 +27,7 @@
                                     value="{{$tarefa->data_limite_conclusao}}" />
                             </div>
                         </fieldset>
-                        <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm">Voltar</a>
+                        <a href="{{ route('tarefa.index') }}" class="btn btn-primary btn-sm">Voltar</a>
                     </div>
                 </div>
             </div>
