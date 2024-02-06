@@ -5,7 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Tarefas</div>
+                <div class="card-header">
+                    Tarefas
+
+                    <a href="{{ route('tarefa.create') }}" class="float-end">
+                        Novo
+                    </a>
+                </div>
 
                 <div class="card-body">
 
@@ -16,11 +22,7 @@
                                 <th scope="col">Tarefa</th>
                                 <th scope="col">Data limite conclusão</th>
                                 <th></th>
-                                <th>
-                                    <a href="{{ route('tarefa.create') }}" class="btn btn-primary btn-sm">
-                                        Criar
-                                    </a>
-                                </th>
+                                <th></th>
                             </tr>
                         </thead>
 
