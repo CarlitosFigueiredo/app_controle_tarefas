@@ -20,8 +20,12 @@
                                     XLSX
                                 </a>
 
-                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'csv']) }}">
+                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'csv']) }}" class="me-3">
                                     CSV
+                                </a>
+
+                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'pdf']) }}">
+                                    PDF
                                 </a>
                             </div>
                         </div>
