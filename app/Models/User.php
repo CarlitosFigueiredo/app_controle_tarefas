@@ -6,6 +6,7 @@ use App\Notifications\RedefinirSenhaNotification;
 use App\Notifications\VerificarEmailNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -53,5 +54,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerificarEmailNotification($this->name));
+    }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function tarefas(): HasMany
+    {
+        return $this->hasMany(Tarefa::class);
     }
 }
