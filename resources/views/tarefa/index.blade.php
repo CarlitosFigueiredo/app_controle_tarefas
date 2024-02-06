@@ -6,11 +6,22 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Tarefas
+                    <div class="row">
+                        <div class="col-6">
+                            Tarefas
+                        </div>
+                        <div class="col-6">
+                            <div class="float-end">
+                                <a href="{{ route('tarefa.create') }}" class="me-3">
+                                    Novo
+                                </a>
 
-                    <a href="{{ route('tarefa.create') }}" class="float-end">
-                        Novo
-                    </a>
+                                <a href="{{ route('tarefas.exportacao') }}">
+                                    XLSX
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body">
