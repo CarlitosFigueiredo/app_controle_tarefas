@@ -15,6 +15,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Tarefa</th>
                                 <th scope="col">Data limite conclusão</th>
+                                <th></th>
                                 <th>
                                     <a href="{{ route('tarefa.create') }}" class="btn btn-primary btn-sm">
                                         Criar
@@ -30,6 +31,14 @@
                                     <td>{{ $t['tarefa'] }}</td>
                                     <td>{{ date('d/m/Y', strtotime($t['data_limite_conclusao'])) }}</td>
                                     <td><a href="{{ route('tarefa.edit', $t['id']) }}">Editar</a></td>
+                                    <td>
+                                        <form action="{{ route('tarefa.destroy', ['tarefa' => $t['id'] ]) }}" id="form_{{ $t['id'] }}"  method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                        </form>
+
+                                        <a href="#" onclick="document.getElementById('form_{{ $t['id'] }}').submit()">Excluir</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
