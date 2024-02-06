@@ -102,8 +102,21 @@ class TarefaController extends Controller
     /**
      * Export excel
      */
-    public function exportacao()
+    public function exportacao(string $extensao)
     {
-        return Excel::download(new TarefasExpert, 'tarefas.xlsx');
+        $nome_arquivo = 'lista_de_tarefas';
+
+        if ($extensao == 'xlsx') {
+
+            $nome_arquivo .= '.' . $extensao;
+        } elseif ($extensao == 'csv') {
+
+            $nome_arquivo .= '.' . $extensao;
+        } else {
+
+            return to_route('tarefa.index');
+        }
+
+        return Excel::download(new TarefasExpert, $nome_arquivo);
     }
 }

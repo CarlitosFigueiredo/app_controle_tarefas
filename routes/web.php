@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/tarefa/exportacao', [TarefaController::class, 'exportacao'])->name('tarefas.exportacao');
+Route::get('/tarefa/exportacao/{extensao}', [TarefaController::class, 'exportacao'])->name('tarefas.exportacao');
 
 Route::resource('/tarefa', TarefaController::class)
     ->middleware('verified');

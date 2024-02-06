@@ -16,8 +16,12 @@
                                     Novo
                                 </a>
 
-                                <a href="{{ route('tarefas.exportacao') }}">
+                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'xlsx']) }}" class="me-3">
                                     XLSX
+                                </a>
+
+                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'csv']) }}">
+                                    CSV
                                 </a>
                             </div>
                         </div>
