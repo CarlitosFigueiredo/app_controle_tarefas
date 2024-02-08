@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Exports\TarefasExpert;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TarefaController extends Controller
@@ -118,8 +118,15 @@ class TarefaController extends Controller
      */
     public function exportar()
     {
-        $pdf = Pdf::loadView('tarefa.pdf', []);
+        $tarefas = auth()->user()->tarefas()->get();
+        $pdf = Pdf::loadView('tarefa.pdf', ['tarefas' => $tarefas]);
 
-        return $pdf->download('lista_de_tarefas.pdf');
+        $pdf->setPaper('a4', 'portrait');
+        //tipo de papel: a4, letter
+        //orientação: landscape (paisagem), portrait (retrato)
+
+        // return $pdf->download('lista_de_tarefas.pdf'); //Download...
+
+        return $pdf->stream('lista_de_tarefas.pdf'); //View...
     }
 }

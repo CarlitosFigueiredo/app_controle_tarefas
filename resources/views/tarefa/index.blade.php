@@ -28,7 +28,7 @@
                                     PDF
                                 </a>
 
-                                <a href="{{ route('tarefas.exportar', ['extensao' => 'pdf']) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                                <a href="{{ route('tarefas.exportar', ['extensao' => 'pdf']) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" target="_blank">
                                     PDF V2
                                 </a>
                             </div>
