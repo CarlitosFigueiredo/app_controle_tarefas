@@ -12,20 +12,24 @@
                         </div>
                         <div class="col-6">
                             <div class="float-end">
-                                <a href="{{ route('tarefa.create') }}" class="me-3">
+                                <a href="{{ route('tarefa.create') }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover me-3">
                                     Novo
                                 </a>
 
-                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'xlsx']) }}" class="me-3">
+                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'xlsx']) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover me-3">
                                     XLSX
                                 </a>
 
-                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'csv']) }}" class="me-3">
+                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'csv']) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover me-3">
                                     CSV
                                 </a>
 
-                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'pdf']) }}">
+                                <a href="{{ route('tarefas.exportacao', ['extensao' => 'pdf']) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover me-3">
                                     PDF
+                                </a>
+
+                                <a href="{{ route('tarefas.exportar', ['extensao' => 'pdf']) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                                    PDF V2
                                 </a>
                             </div>
                         </div>
@@ -51,14 +55,14 @@
                                     <th scope="row">{{ $t['id'] }}</th>
                                     <td>{{ $t['tarefa'] }}</td>
                                     <td>{{ date('d/m/Y', strtotime($t['data_limite_conclusao'])) }}</td>
-                                    <td><a href="{{ route('tarefa.edit', $t['id']) }}">Editar</a></td>
+                                    <td><a href="{{ route('tarefa.edit', $t['id']) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Editar</a></td>
                                     <td>
                                         <form action="{{ route('tarefa.destroy', ['tarefa' => $t['id'] ]) }}" id="form_{{ $t['id'] }}"  method="post">
                                             @method('DELETE')
                                             @csrf
                                         </form>
 
-                                        <a href="#" onclick="document.getElementById('form_{{ $t['id'] }}').submit()">Excluir</a>
+                                        <a href="#" onclick="document.getElementById('form_{{ $t['id'] }}').submit()" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Excluir</a>
                                     </td>
                                 </tr>
                             @endforeach

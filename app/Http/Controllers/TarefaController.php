@@ -6,6 +6,7 @@ use App\Exports\TarefasExpert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -45,7 +46,7 @@ class TarefaController extends Controller
         $tarefa = Tarefa::create($dados);
 
         $destinatario = auth()->user()->email;
-        // Mail::to($destinatario)->send(new NovaTarefaMail($tarefa));
+        Mail::to($destinatario)->send(new NovaTarefaMail($tarefa));
 
         return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
     }
@@ -110,5 +111,15 @@ class TarefaController extends Controller
         }
 
         return to_route('tarefa.index');
+    }
+
+    /**
+     * Export PDF Via barryvdh / laravel-dompdf
+     */
+    public function exportar()
+    {
+        $pdf = Pdf::loadView('tarefa.pdf', []);
+
+        return $pdf->download('lista_de_tarefas.pdf');
     }
 }
